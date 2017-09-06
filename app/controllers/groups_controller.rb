@@ -22,10 +22,12 @@ class GroupsController < ApplicationController
   end
   def update
     @group =Group.find(params[:id])
-    @group.update(group_params)
+    if @group.update(group_params)
 
-    redirect_to groups_path,notice:"上传成功！"
-
+      redirect_to groups_path,notice:"上传成功！"
+    else
+      render :edit
+    end
   end
 
 
