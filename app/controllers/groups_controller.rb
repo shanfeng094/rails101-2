@@ -10,9 +10,10 @@ class GroupsController < ApplicationController
   end
   def show
       @group =Group.find(params[:id])
+      @posts = @group.posts
   end
   def destroy
-    
+
     @group.destroy
     flash[:alert] = "删除组"
     redirect_to groups_path
@@ -21,10 +22,10 @@ class GroupsController < ApplicationController
 
   def edit
 
-    
+
   end
   def update
-    
+
     if @group.update(group_params)
 
       redirect_to groups_path,notice:"上传成功！"
